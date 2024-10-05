@@ -1,0 +1,11 @@
+/home/ryz/Documents/Code/rm-out/build/CMakeFiles/vision-2024.dir
+/home/ryz/Documents/Code/rm-out/build/CMakeFiles/edit_cache.dir
+/home/ryz/Documents/Code/rm-out/build/CMakeFiles/rebuild_cache.dir
+/home/ryz/Documents/Code/rm-out/build/modules/common/CMakeFiles/edit_cache.dir
+/home/ryz/Documents/Code/rm-out/build/modules/common/CMakeFiles/rebuild_cache.dir
+/home/ryz/Documents/Code/rm-out/build/modules/autoaim/CMakeFiles/srm_autoaim.dir
+/home/ryz/Documents/Code/rm-out/build/modules/autoaim/CMakeFiles/edit_cache.dir
+/home/ryz/Documents/Code/rm-out/build/modules/autoaim/CMakeFiles/rebuild_cache.dir
+/home/ryz/Documents/Code/rm-out/build/modules/core/CMakeFiles/srm_core.dir
+/home/ryz/Documents/Code/rm-out/build/modules/core/CMakeFiles/edit_cache.dir
+/home/ryz/Documents/Code/rm-out/build/modules/core/CMakeFiles/rebuild_cache.dir
