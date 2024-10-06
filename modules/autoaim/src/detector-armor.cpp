@@ -23,19 +23,10 @@ bool ArmorDetector::Initialize() {
 
 bool ArmorDetector::Run(cv::Mat REF_IN image, ArmorPtrList REF_OUT armor_list) const {
   /// 请补全
-  if (!armor_detector_->Run(image, armor_list_)) {
-    LOG(ERROR) << "Failed to detect armor.";
-    return false;
-  }
-  if (!armor_list_.empty()) {
-    yaw_ = 0;
-    pitch_ = 0;
-  } else {
-    drawer_->DrawArmor(armor_list.front());
-    const Armor& the_one = *armor_list.front();
-    if (the_one.color != color_) {
-      cv::Point2f center = the_one.Center();
-    }
+  const auto objs = yolo_->Run(image);
+  for (auto& [x1, y1, x2, y2, prob, clas, pts] : objs) {
+    Armor armor{pts[0], pts[1], pts[2], pts[3], static_cast<Color>(clas)};
+    armor_list.push_back(std::make_shared<Armor>(std::move(armor)));
   }
   return true;
 }

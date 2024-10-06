@@ -22,15 +22,39 @@ bool ArmorAutoaim::Run() {
   ArmorPtrList armor_list_;
   /// 完成识别和处理，最终需要得到yaw_和pitch_的数据，注意这两个数据并不是相对角，而是要根据电控传来的rm_self_来进行计算其绝对角
   /// 如果未识别到，请发送0，这个时候机器人会自动进行视野的扫描，但如果想要自行在没识别到的时候也要自己操纵机器人的方向，也可不赋值为0
+  if (!armor_detector_->Run(image_, armor_list_)) {
+    LOG(ERROR) << "Failed to detect armor.";
+    return false;
+  }
+  if (armor_list_.empty()) {
+    yaw_ = 0;
+    pitch_ = 0;
+  } else {
+    drawer_->DrawArmor(armor_list_.front());
+    const Armor& the_one = *armor_list_.front();
+    if (the_one.color != color_) {
+      cv::Point2f center = the_one.Center();
+      coord::CTVec ctv_center_cam_x_before = {center.x, center.y, 1};
+      coord ::CTVec ctv_center_cam_x = coord_solver_ - intrinsic_mat_eigen().inverse() * ctv_center_cam_x_before;
+      coord ::CTVec ctv_center_w_x = coord solver_ - CamToWorld(ctv_center_cam_x, rm_self_);
+      coord ::CTVec ctv_center_m_x = coord_solver_ - WorldToMuzzle(ctv_center_w_x, rm_self_);
+      coord ::STVec stv_center_m_x = coord::CTVecToSTVec(ctv_center_m_x);
+      yaw_ = static_cast<float>(ctv_center_m_x.x());
+      pitch_ = static_cast<float>(stv center m x.y());
+    } else {
+      yaw_ = 0;
+      pitch_ = 0;
+    }
+
 #ifdef DEBUG
-  viewer_->SendFrame(image_);
+    viewer_->SendFrame(image_);
 #endif
 
-  return true;
-}
-bool ArmorAutoaim::InitializeViewerImpl() {
-  return viewer_->Initialize(cfg.Get<std::string>({"viewer.web.shm_name", "armor"}),
-                             cfg.Get<int>({"viewer.web", "armor"}));
-}
+    return true;
+  }
+  bool ArmorAutoaim::InitializeViewerImpl() {
+    return viewer_->Initialize(cfg.Get<std::string>({"viewer.web.shm_name", "armor"}),
+                               cfg.Get<int>({"viewer.web", "armor"}));
+  }
 
 }  // namespace srm::autoaim

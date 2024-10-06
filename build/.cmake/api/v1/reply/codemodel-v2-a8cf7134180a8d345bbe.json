@@ -1,0 +1,126 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "modules/common",
+					"jsonFile" : "directory-modules.common-Debug-95db5d25ab41600866b3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "modules/common"
+				},
+				{
+					"build" : "modules/autoaim",
+					"jsonFile" : "directory-modules.autoaim-Debug-b8c950ab2dffae382502.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "modules/autoaim",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "modules/core",
+					"jsonFile" : "directory-modules.core-Debug-5b192fd4265add5af97f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "modules/core",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					],
+					"name" : "Vision-2024",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "srm_autoaim::@266fa3c5e87920f12172",
+					"jsonFile" : "target-srm_autoaim-Debug-1cff35827250520443ac.json",
+					"name" : "srm_autoaim",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "srm_core::@90e83aff1e86c0750a9d",
+					"jsonFile" : "target-srm_core-Debug-6ba4c0d0cafb09b2ca3c.json",
+					"name" : "srm_core",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "vision-2024::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-vision-2024-Debug-98f4b0c04c78948c70b8.json",
+					"name" : "vision-2024",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ryz/Documents/Code/rm-out/build",
+		"source" : "/home/ryz/Documents/Code/rm-out"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
