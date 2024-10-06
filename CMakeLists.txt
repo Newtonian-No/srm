@@ -43,21 +43,28 @@ endif()
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
+add_compile_definitions(GLOG_USE_GLOG_EXPORT)
+#无敌了百度，获得一天免喷权
+
+
+# 设置 toml11 库的路径
+set(TOML11_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/thirdparty/toml11")
+include_directories(${TOML11_INCLUDE_DIR})
+
+# 添加 toml11 库的头文件路径
+#add_library(toml11 INTERFACE)
+#target_include_directories(toml11 INTERFACE ${TOML11_INCLUDE_DIR})
+
+# 添加 glog 的头文件路径
+include_directories("${CMAKE_SOURCE_DIR}/thirdparty/glog/include/glog")
+
+
 # 添加可执行文件
 add_executable(${EXECUTABLE_NAME} main.cpp)
 
-# 设置 toml11 库的路径
-set(TOML11_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/path/to/toml11")
-
-# 添加 toml11 库的头文件路径
-add_library(toml11 INTERFACE)
-target_include_directories(toml11 INTERFACE ${TOML11_INCLUDE_DIR})
-
-# 添加 glog 的头文件路径
-include_directories("${CMAKE_SOURCE_DIR}/thirdparty/glog/include")
-
 # 链接 glog和toml11 库
-target_link_libraries(${EXECUTABLE_NAME} PUBLIC toml11 PUBLIC glog)
+#target_link_libraries(${EXECUTABLE_NAME} PUBLIC toml11 PUBLIC glog)
+target_link_libraries(${EXECUTABLE_NAME} PUBLIC glog)
 
 
 # 编译模块 注意顺序问题

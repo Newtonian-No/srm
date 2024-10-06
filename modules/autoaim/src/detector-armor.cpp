@@ -22,7 +22,21 @@ bool ArmorDetector::Initialize() {
 }
 
 bool ArmorDetector::Run(cv::Mat REF_IN image, ArmorPtrList REF_OUT armor_list) const {
-  ///请补全
+  /// 请补全
+  if (!armor_detector_->Run(image, armor_list_)) {
+    LOG(ERROR) << "Failed to detect armor.";
+    return false;
+  }
+  if (!armor_list_.empty()) {
+    yaw_ = 0;
+    pitch_ = 0;
+  } else {
+    drawer_->DrawArmor(armor_list.front());
+    const Armor& the_one = *armor_list.front();
+    if (the_one.color != color_) {
+      cv::Point2f center = the_one.Center();
+    }
+  }
   return true;
 }
 
